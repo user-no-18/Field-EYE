@@ -51,7 +51,7 @@ export default function ExpenseCharts({ categories, daily, color }: ExpenseChart
                   ))}
                 </Pie>
                 <Tooltip 
-                  formatter={(value: number) => `₹${value}`}
+                  formatter={(value: any) => `₹${value}`}
                   contentStyle={{ borderRadius: '8px', border: '1px solid #e2e8f0', background: 'rgba(255,255,255,0.95)', boxShadow: '0 4px 6px rgba(0,0,0,0.05)', fontSize: '0.85rem', fontWeight: 500 }}
                 />
               </PieChart>
@@ -116,7 +116,7 @@ export default function ExpenseCharts({ categories, daily, color }: ExpenseChart
               <YAxis hide={true} />
               <Tooltip 
                 cursor={{ fill: '#f8fafc' }}
-                formatter={(value: number) => `₹${value}`}
+                formatter={(value: any) => `₹${value}`}
                 contentStyle={{ borderRadius: '8px', border: '1px solid #e2e8f0', background: 'rgba(255,255,255,0.95)', boxShadow: '0 4px 6px rgba(0,0,0,0.05)', fontSize: '0.85rem', fontWeight: 500 }}
               />
               <Bar dataKey="amount" fill="#134e4a" radius={[2, 2, 0, 0]} barSize={56} />

@@ -109,7 +109,7 @@ export default function AnalyticsPage() {
                   paddingAngle={5}
                   dataKey="amount"
                   nameKey="category"
-                  label={({ category, amount }) => `${category} (₹${amount})`}
+                  label={({ name, value }: any) => `${name} (₹${value})`}
                   labelLine={false}
                 >
                   {companyCategoryData.map((entry, index) => (
@@ -117,7 +117,7 @@ export default function AnalyticsPage() {
                   ))}
                 </Pie>
                 <RechartsTooltip 
-                  formatter={(value: number) => `₹${value}`}
+                  formatter={(value: any) => `₹${value}`}
                   contentStyle={{ borderRadius: '12px', border: '1px solid var(--glass-border)', background: 'rgba(255,255,255,0.9)', backdropFilter: 'blur(10px)' }}
                 />
               </PieChart>
@@ -136,7 +136,7 @@ export default function AnalyticsPage() {
                 <YAxis dataKey="name" type="category" axisLine={false} tickLine={false} width={100} style={{ fontSize: '0.85rem' }} />
                 <RechartsTooltip 
                   cursor={{ fill: 'rgba(0,0,0,0.02)' }}
-                  formatter={(value: number) => `₹${value}`}
+                  formatter={(value: any) => `₹${value}`}
                   contentStyle={{ borderRadius: '12px', border: '1px solid var(--glass-border)', background: 'rgba(255,255,255,0.9)', backdropFilter: 'blur(10px)' }}
                 />
                 <Bar dataKey="budgetSpent" radius={[0, 4, 4, 0]}>
