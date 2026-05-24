@@ -19,29 +19,31 @@ export default function ExpenseCharts({ categories, daily, color }: ExpenseChart
       {/* Expense Breakdown Card */}
       <div style={{ 
         background: '#ffffff', 
-        borderRadius: '20px',
+        borderRadius: '16px',
         boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)',
         border: '1px solid rgba(0, 0, 0, 0.06)',
-        padding: '2rem',
+        padding: '0.75rem 1.25rem',
         display: 'flex',
         flexDirection: 'column',
-        position: 'relative'
+        position: 'relative',
+        flex: 1,
+        minHeight: 0
       }}>
-        <h2 style={{ fontSize: '0.85rem', fontWeight: 700, color: '#0f172a', letterSpacing: '0.05em', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-           <FileText size={16} /> EXPENSE BREAKDOWN
+        <h2 style={{ fontSize: '0.8rem', fontWeight: 700, color: '#0f172a', letterSpacing: '0.05em', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+           <FileText size={14} /> EXPENSE BREAKDOWN
         </h2>
         
-        <div style={{ display: 'flex', alignItems: 'center', gap: '2rem', '@media (max-width: 768px)': { flexDirection: 'column' } }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap', flex: 1, minHeight: 0 }}>
           {/* Donut Chart */}
-          <div style={{ width: '50%', height: '160px', minWidth: '160px' }}>
+          <div style={{ flex: '1 1 120px', height: '110px', minWidth: '120px' }}>
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <Pie
                   data={categories}
                   cx="50%"
                   cy="50%"
-                  innerRadius={50}
-                  outerRadius={90}
+                  innerRadius={30}
+                  outerRadius={50}
                   paddingAngle={2}
                   dataKey="amount"
                   stroke="none"
@@ -52,17 +54,17 @@ export default function ExpenseCharts({ categories, daily, color }: ExpenseChart
                 </Pie>
                 <Tooltip 
                   formatter={(value: any) => `₹${value}`}
-                  contentStyle={{ borderRadius: '12px', border: '1px solid #e2e8f0', background: 'rgba(255,255,255,0.98)', boxShadow: '0 8px 16px rgba(0,0,0,0.1)', fontSize: '0.9rem', fontWeight: 600 }}
+                  contentStyle={{ borderRadius: '12px', border: '1px solid #e2e8f0', background: 'rgba(255,255,255,0.98)', boxShadow: '0 8px 16px rgba(0,0,0,0.1)', fontSize: '0.85rem', fontWeight: 600 }}
                 />
               </PieChart>
             </ResponsiveContainer>
           </div>
 
           {/* Custom Legend */}
-          <div style={{ width: '50%', display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
+          <div style={{ flex: '1 1 140px', display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
             {categories.map((entry, index) => (
-              <div key={index} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', fontSize: '0.9rem', color: '#0f172a', fontWeight: 600 }}>
-                <div style={{ width: '12px', height: '12px', borderRadius: '3px', backgroundColor: PIE_COLORS[index % PIE_COLORS.length], flexShrink: 0 }} />
+              <div key={index} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.8rem', color: '#0f172a', fontWeight: 600 }}>
+                <div style={{ width: '10px', height: '10px', borderRadius: '2px', backgroundColor: PIE_COLORS[index % PIE_COLORS.length], flexShrink: 0 }} />
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
                   <span>{entry.category}</span>
                   <span style={{ color: '#64748b', fontWeight: 700 }}>₹{entry.amount}</span>
@@ -72,23 +74,23 @@ export default function ExpenseCharts({ categories, daily, color }: ExpenseChart
           </div>
         </div>
 
-        <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '1.5rem' }}>
+        <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '0.5rem' }}>
           <button style={{ 
             display: 'flex', 
             alignItems: 'center', 
-            gap: '0.5rem', 
+            gap: '0.4rem', 
             background: '#f8fafc', 
             border: '1px solid #e2e8f0', 
             color: '#334155', 
-            padding: '0.6rem 1.2rem', 
-            borderRadius: '12px', 
-            fontSize: '0.9rem', 
+            padding: '0.35rem 0.8rem', 
+            borderRadius: '8px', 
+            fontSize: '0.8rem', 
             fontWeight: 600,
             cursor: 'pointer',
             boxShadow: '0 1px 2px rgba(0,0,0,0.05)',
             transition: 'all 0.2s'
           }}>
-            <FileText size={16} /> View Receipts
+            <FileText size={14} /> View Receipts
           </button>
         </div>
       </div>
@@ -96,35 +98,35 @@ export default function ExpenseCharts({ categories, daily, color }: ExpenseChart
       {/* Daily Spending Trend Card */}
       <div style={{ 
         background: '#ffffff', 
-        borderRadius: '20px',
+        borderRadius: '16px',
         boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)',
         border: '1px solid rgba(0, 0, 0, 0.06)',
-        padding: '2rem',
+        padding: '0.75rem 1.25rem',
         display: 'flex',
         flexDirection: 'column',
         flex: 1,
-        minHeight: '320px'
+        minHeight: 0
       }}>
-        <h2 style={{ fontSize: '0.85rem', fontWeight: 700, color: '#0f172a', letterSpacing: '0.05em', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+        <h2 style={{ fontSize: '0.8rem', fontWeight: 700, color: '#0f172a', letterSpacing: '0.05em', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
            DAILY SPENDING TREND
         </h2>
-        <div style={{ flex: 1, minHeight: '220px', marginTop: '0.5rem' }}>
+        <div style={{ flex: 1, minHeight: '80px', marginTop: '0.25rem' }}>
           <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={daily} margin={{ top: 10, right: 10, left: -15, bottom: 0 }}>
+            <BarChart data={daily} margin={{ top: 5, right: 5, left: -25, bottom: 0 }}>
               <XAxis 
                 dataKey="date" 
                 axisLine={false} 
                 tickLine={false} 
-                tick={{ fontSize: 12, fill: '#64748b', fontWeight: 600 }} 
-                dy={10}
+                tick={{ fontSize: 11, fill: '#64748b', fontWeight: 600 }} 
+                dy={5}
               />
               <YAxis hide={true} />
               <Tooltip 
                 cursor={{ fill: '#f0f0f0' }}
                 formatter={(value: any) => `₹${value}`}
-                contentStyle={{ borderRadius: '12px', border: '1px solid #e2e8f0', background: 'rgba(255,255,255,0.98)', boxShadow: '0 8px 16px rgba(0,0,0,0.1)', fontSize: '0.9rem', fontWeight: 600 }}
+                contentStyle={{ borderRadius: '12px', border: '1px solid #e2e8f0', background: 'rgba(255,255,255,0.98)', boxShadow: '0 8px 16px rgba(0,0,0,0.1)', fontSize: '0.85rem', fontWeight: 600 }}
               />
-              <Bar dataKey="amount" fill="#10b981" radius={[6, 6, 0, 0]} barSize={48} />
+              <Bar dataKey="amount" fill="#10b981" radius={[4, 4, 0, 0]} barSize={36} />
             </BarChart>
           </ResponsiveContainer>
         </div>
