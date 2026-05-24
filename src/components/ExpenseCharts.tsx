@@ -30,7 +30,7 @@ export default function ExpenseCharts({ categories, daily, color }: ExpenseChart
         minHeight: 0
       }}>
         <h2 style={{ fontSize: '0.8rem', fontWeight: 700, color: '#0f172a', letterSpacing: '0.05em', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-           <FileText size={14} /> EXPENSE BREAKDOWN
+           <FileText size={14} /> WHAT DID THEY SPEND MONEY ON?
         </h2>
         
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap', flex: 1, minHeight: 0 }}>
@@ -90,7 +90,7 @@ export default function ExpenseCharts({ categories, daily, color }: ExpenseChart
             boxShadow: '0 1px 2px rgba(0,0,0,0.05)',
             transition: 'all 0.2s'
           }}>
-            <FileText size={14} /> View Receipts
+            <FileText size={14} /> See Purchase Bills
           </button>
         </div>
       </div>
@@ -108,7 +108,7 @@ export default function ExpenseCharts({ categories, daily, color }: ExpenseChart
         minHeight: 0
       }}>
         <h2 style={{ fontSize: '0.8rem', fontWeight: 700, color: '#0f172a', letterSpacing: '0.05em', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-           DAILY SPENDING TREND
+           HOW MUCH DID THEY SPEND EACH DAY?
         </h2>
         <div style={{ flex: 1, minHeight: '80px', marginTop: '0.25rem' }}>
           <ResponsiveContainer width="100%" height="100%">

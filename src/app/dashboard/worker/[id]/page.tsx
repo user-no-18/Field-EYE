@@ -22,6 +22,7 @@ export default function WorkerPage({ params }: { params: Promise<{ id: string }>
   }
 
   const isOverBudget = worker.budgetSpent > worker.budgetTotal;
+  const firstName = worker.name.split(' ')[0];
 
   return (
     <div style={{ 
@@ -39,11 +40,11 @@ export default function WorkerPage({ params }: { params: Promise<{ id: string }>
       {/* Top Bar */}
       <div style={{ display: 'flex', alignItems: 'center' }}>
         <Link href="/dashboard" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', color: '#64748b', fontSize: '0.9rem', fontWeight: 600, textDecoration: 'none', transition: 'color 0.2s' }}>
-          <ArrowLeft size={16} /> Back to Dashboard
+          <ArrowLeft size={16} /> Back to main dashboard
         </Link>
       </div>
 
-      {/* Header Card - Responsive & Compact */}
+      {/* Header Card - Simplified & Compact */}
       <div style={{ 
         display: 'flex',
         justifyContent: 'space-between',
@@ -68,25 +69,35 @@ export default function WorkerPage({ params }: { params: Promise<{ id: string }>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#64748b', fontSize: '0.85rem', marginTop: '0.25rem', fontWeight: 500, flexWrap: 'wrap' }}>
               <span>{worker.role}</span>
               <span style={{ color: '#cbd5e1' }}>•</span>
-              <span style={{ display: 'flex', alignItems: 'center', gap: '0.2rem' }}>
-                <MapPin size={12} /> {worker.location}
+              <span style={{ display: 'flex', alignItems: 'center', gap: '0.2' }}>
+                <MapPin size={12} /> Working in {worker.location}
               </span>
             </div>
           </div>
         </div>
 
-        {/* Center: Status Pills */}
+        {/* Center: Status Pills in everyday words */}
         <div style={{ display: 'flex', gap: '0.6rem', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
-          <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', background: '#ecfdf5', color: '#059669', padding: '0.4rem 0.8rem', borderRadius: '50px', fontSize: '0.8rem', fontWeight: 700 }}>
-            <div style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#059669' }} />
-            {worker.status === 'active' ? 'Active' : 'Offline'}
+          <span style={{ 
+            display: 'flex', 
+            alignItems: 'center', 
+            gap: '0.4rem', 
+            background: worker.status === 'active' ? '#ecfdf5' : '#f1f5f9', 
+            color: worker.status === 'active' ? '#059669' : '#64748b', 
+            padding: '0.4rem 0.8rem', 
+            borderRadius: '50px', 
+            fontSize: '0.8rem', 
+            fontWeight: 700 
+          }}>
+            <div style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: worker.status === 'active' ? '#059669' : '#64748b' }} />
+            {worker.status === 'active' ? 'On the road' : 'Phone off / Signal lost'}
           </span>
           <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', background: '#eff6ff', color: '#2563eb', padding: '0.4rem 0.8rem', borderRadius: '50px', fontSize: '0.8rem', fontWeight: 700 }}>
-            <Clock size={12} /> 09:00 AM
+            <Clock size={12} /> Started day at 09:00 AM
           </span>
           <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', background: '#fef2f2', color: '#dc2626', padding: '0.4rem 0.8rem', borderRadius: '50px', fontSize: '0.8rem', fontWeight: 700 }}>
             <div style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#dc2626' }} />
-            45m Idle
+            Not moved for 45 mins
           </span>
         </div>
         
@@ -99,13 +110,13 @@ export default function WorkerPage({ params }: { params: Promise<{ id: string }>
           minWidth: '180px'
         }}>
           <div style={{ fontSize: '0.7rem', fontWeight: 700, color: '#475569', letterSpacing: '0.05em', marginBottom: '0.25rem' }}>
-            BUDGET STATUS
+            MONEY SPENT TODAY
           </div>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.4rem', marginBottom: '0.4rem' }}>
             <span style={{ fontSize: '1.4rem', fontWeight: 800, color: isOverBudget ? '#dc2626' : '#0f172a' }}>
               ₹{worker.budgetSpent.toLocaleString()}
             </span>
-            <span style={{ fontSize: '0.8rem', color: '#94a3b8', fontWeight: 600 }}>of ₹{worker.budgetTotal.toLocaleString()}</span>
+            <span style={{ fontSize: '0.8rem', color: '#94a3b8', fontWeight: 600 }}>out of ₹{worker.budgetTotal.toLocaleString()} limit</span>
             {isOverBudget && <AlertTriangle size={16} color="#dc2626" />}
           </div>
           <div style={{ height: '4px', background: '#e2e8f0', borderRadius: '50px', overflow: 'hidden' }}>
@@ -114,7 +125,7 @@ export default function WorkerPage({ params }: { params: Promise<{ id: string }>
         </div>
       </div>
 
-      {/* Main Content Grid - Grid optimized for maximum height viewport space */}
+      {/* Main Content Grid */}
       <div style={{ 
         display: 'grid', 
         gridTemplateColumns: '1.8fr 1fr', 
@@ -123,7 +134,7 @@ export default function WorkerPage({ params }: { params: Promise<{ id: string }>
         minHeight: 0,
         height: '100%'
       }}>
-        {/* Left Column: Live Tracking & Itinerary */}
+        {/* Left Column: Journey Map */}
         <div style={{ 
           background: '#ffffff', 
           borderRadius: '16px',
@@ -136,7 +147,7 @@ export default function WorkerPage({ params }: { params: Promise<{ id: string }>
           overflow: 'hidden'
         }}>
           <h2 style={{ fontSize: '0.8rem', fontWeight: 700, color: '#0f172a', letterSpacing: '0.05em', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-             <Activity size={14} /> LIVE TRACKING & ITINERARY
+             <Activity size={14} /> WHERE HAS {firstName.toUpperCase()} TRAVELED TODAY?
           </h2>
           
           {/* Path Tracker */}
@@ -166,7 +177,7 @@ export default function WorkerPage({ params }: { params: Promise<{ id: string }>
 
           {/* Distance Footer */}
           <div style={{ marginTop: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#0f172a', fontWeight: 700, fontSize: '0.85rem' }}>
-             <TrendingUp size={16} color="#10b981" /> Total Distance: <span style={{ color: '#10b981' }}>{worker.distanceTravelled}</span>
+             <TrendingUp size={16} color="#10b981" /> Total distance covered today: <span style={{ color: '#10b981' }}>{worker.distanceTravelled}</span>
           </div>
         </div>
 
