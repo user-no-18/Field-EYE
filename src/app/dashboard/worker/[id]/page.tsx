@@ -93,7 +93,7 @@ export default function WorkerPage({ params }: { params: Promise<{ id: string }>
             {worker.status === 'active' ? 'On the road' : 'Phone off / Signal lost'}
           </span>
           <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', background: '#eff6ff', color: '#2563eb', padding: '0.4rem 0.8rem', borderRadius: '50px', fontSize: '0.8rem', fontWeight: 700 }}>
-            <Clock size={12} /> Started day at 09:00 AM
+            <Clock size={12} /> 09:00 AM
           </span>
           <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', background: '#fef2f2', color: '#dc2626', padding: '0.4rem 0.8rem', borderRadius: '50px', fontSize: '0.8rem', fontWeight: 700 }}>
             <div style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#dc2626' }} />
