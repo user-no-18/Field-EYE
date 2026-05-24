@@ -1,0 +1,86 @@
+.card {
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  border-left: 4px solid transparent;
+}
+
+.card:hover {
+  transform: translateX(5px);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.active {
+  background: #ffffff;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  border-left-color: var(--card-color, var(--accent-color));
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.name {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+}
+
+.role {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.distance {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  background: rgba(0, 0, 0, 0.04);
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+}
+
+.budgetSection {
+  margin-top: 1rem;
+}
+
+.budgetHeader {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.budgetSpent {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.budgetTotal {
+  color: var(--text-secondary);
+}
+
+.progressBarContainer {
+  height: 6px;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progressBar {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 1s ease-out;
+}
+
+.overBudget {
+  background: #ef4444 !important;
+}
